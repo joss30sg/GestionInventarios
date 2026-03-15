@@ -1,17 +1,20 @@
+export type UserRole = 'Admin' | 'Employee';
+
 export interface User {
   id: number;
   username: string;
   email: string;
-  role: string;
-  isActive: boolean;
-  createdAt: string;
+  role: UserRole;
 }
 
 export interface AuthResponse {
   success: boolean;
-  message: string;
-  token?: string;
-  user?: User;
+  data?: {
+    token: string;
+    user?: User;
+    expiresIn?: number;
+  };
+  message?: string;
 }
 
 export interface LoginRequest {
@@ -23,39 +26,43 @@ export interface RegisterRequest {
   username: string;
   email: string;
   password: string;
+  role?: UserRole;
 }
 
-export interface OrderItem {
+export interface Product {
   id: number;
-  productName: string;
+  name: string;
+  description: string;
+  price: number;
   quantity: number;
-  unitPrice: number;
-  totalPrice: number;
+  category: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt?: string;
 }
 
-export interface CreateOrderItemRequest {
-  productName: string;
-  quantity: number;
-  unitPrice: number;
-}
-
-export interface Order {
+export interface Inventory {
   id: number;
-  numeroPedido: string;
-  cliente: string;
-  fecha: string;
-  total: number;
-  estado: string;
-  description?: string;
-  items: OrderItem[];
+  productId: number;
+  productName: string;
+  category: string;
+  quantityOnHand: number;
+  quantityReserved: number;
+  quantityOnOrder: number;
+  availableQuantity: number;
+  reorderLevel: number;
+  reorderQuantity: number;
+  status: 'OK' | 'LOW' | 'OUT_OF_STOCK';
+  lastCountedAt?: string;
+  lastMovementAt?: string;
 }
 
-export interface CreateOrderRequest {
-  description: string;
-  items: CreateOrderItemRequest[];
-}
-
-export interface UpdateOrderRequest {
-  description: string;
-  items?: CreateOrderItemRequest[];
+export interface ApiResponse<T> {
+  success: boolean;
+  data: T;
+  message?: string;
+  errors?: Array<{
+    field: string;
+    message: string;
+  }>;
 }

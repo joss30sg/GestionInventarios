@@ -16,9 +16,22 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'https://localhost:5001',
+        target: 'http://localhost:5000',
         changeOrigin: true,
         secure: false,
+      },
+    },
+  },
+  build: {
+    target: 'ES2020',
+    minify: 'terser',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'http-vendor': ['axios'],
+        },
       },
     },
   },
