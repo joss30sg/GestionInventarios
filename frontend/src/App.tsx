@@ -1,58 +1,89 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from '@/contexts/AuthContext';
-import ProtectedRoute from '@/components/ProtectedRoute';
-import Navbar from '@/components/Navbar';
-import ToastContainer, { useToast } from '@/components/Toast';
-import ErrorBoundary from '@/components/ErrorBoundary';
-import Login from '@/pages/Login';
-import Register from '@/pages/Register';
-import ForgotPassword from '@/pages/ForgotPassword';
-import Dashboard from '@/pages/Dashboard';
-import '@/styles/global.css';
-import '@/styles/toast.css';
-import '@/styles/skeleton.css';
-import '@/styles/modal.css';
-import '@/styles/validation.css';
-import '@/styles/stats.css';
-import '@/styles/empty-state.css';
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
+import { initializeApi, setAuthToken } from './services/api';
+import { LoginPage } from './pages/LoginPage';
+import { ProfilePage } from './pages/ProfilePage';
+import { InventoryPage } from './pages/InventoryPage';
+import { ProductsPage } from './pages/ProductsPage';
+import { ReportsPage } from './pages/ReportsPage';
+import { NotFound } from './pages/NotFound';
+import { RoleProtectedRoute } from './components/RoleProtectedRoute';
+import { NotificationCenter } from './components/NotificationCenter';
+import { useInventoryNotifications } from './hooks/useInventoryNotifications';
+import './styles/global.css';
 
-// Context para Toast
-export const ToastContext = React.createContext<ReturnType<typeof useToast> | null>(null);
+function ProtectedRoute({
+  children,
+  isAuthenticated,
+}: {
+  children: React.ReactNode;
+  isAuthenticated: boolean;
+}) {
+  return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
+}
 
-const App: React.FC = () => {
-  const toast = useToast();
+function App() {
+  const { isAuthenticated, token, isAdmin } = useAuth();
+  const { notifications, dismissNotification } = useInventoryNotifications();
+
+  useEffect(() => {
+    if (token) {
+      initializeApi(token);
+      setAuthToken(token);
+    } else {
+      initializeApi();
+    }
+  }, [token]);
 
   return (
-    <ErrorBoundary>
-      <Router>
-        <AuthProvider>
-          <ToastContext.Provider value={toast}>
-            <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-              <Navbar />
-              <div style={{ flex: 1 }}>
-                <Routes>
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/forgot-password" element={<ForgotPassword />} />
-                  <Route
-                    path="/dashboard"
-                    element={
-                      <ProtectedRoute>
-                        <Dashboard />
-                      </ProtectedRoute>
-                    }
-                  />
-                  <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                </Routes>
-              </div>
-              <ToastContainer toasts={toast.toasts} onRemove={toast.removeToast} />
-            </div>
-          </ToastContext.Provider>
-        </AuthProvider>
-      </Router>
-    </ErrorBoundary>
+    <BrowserRouter>
+      {isAuthenticated && isAdmin && (
+        <NotificationCenter 
+          notifications={notifications} 
+          onDismiss={dismissNotification}
+          maxVisible={3}
+        />
+      )}
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/inventory"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <InventoryPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/products"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <ProductsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/reports"
+          element={
+            <RoleProtectedRoute requiredRole="Admin">
+              <ReportsPage />
+            </RoleProtectedRoute>
+          }
+        />
+        <Route path="/" element={<Navigate to={isAuthenticated ? "/inventory" : "/login"} replace />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
-};
+}
 
 export default App;
