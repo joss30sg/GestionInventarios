@@ -166,7 +166,42 @@ backend/InventoryManagementAPI.Api/appsettings.json
 
 ---
 
-## 🔧 Puertos y Direcciones
+## � Despliegue Local con Docker
+
+### Requisitos
+- **Docker Desktop** ([Descargar](https://www.docker.com/products/docker-desktop/))
+
+### 1. Levantar todos los servicios
+
+```bash
+docker-compose up --build
+```
+
+Esto levanta 3 contenedores:
+| Servicio | Puerto | URL |
+|----------|--------|-----|
+| **SQL Server** | 1433 | localhost:1433 |
+| **Backend (.NET)** | 5000 | http://localhost:5000 |
+| **Frontend (React)** | 3000 | http://localhost:3000 |
+
+### 2. Acceder a la aplicación
+
+Abre tu navegador en: **http://localhost:3000**
+
+### 3. Detener los servicios
+
+```bash
+docker-compose down
+```
+
+Para eliminar también los datos de la base de datos:
+```bash
+docker-compose down -v
+```
+
+---
+
+## �🔧 Puertos y Direcciones
 
 | Servicio | Puerto | URL |
 |----------|--------|-----|
