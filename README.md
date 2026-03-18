@@ -87,13 +87,27 @@ Abre tu navegador en: **http://localhost:3000**
 
 - **Node.js** 18+ ([Descargar](https://nodejs.org/))
 - **.NET 8 SDK** ([Descargar](https://dotnet.microsoft.com/en-us/download/dotnet/8.0))
-- **SQL Server LocalDB** o **SQL Server Express** (instalado automáticamente con Visual Studio)
+- **SQL Server Express** ([Descargar](https://www.microsoft.com/en-us/sql-server/sql-server-downloads))
 
 Verifica la instalación:
 ```bash
 node --version    # v18.0.0 o superior
 npm --version     # 9.0.0 o superior
 dotnet --version  # 8.0.0 o superior
+```
+
+### Configurar Base de Datos
+
+La aplicación usa **SQL Server Express** con la instancia `.\SQLEXPRESS`. La base de datos se crea automáticamente al iniciar el backend por primera vez.
+
+Si tu instancia de SQL Server tiene un nombre diferente, edita la cadena de conexión en:
+```
+backend/InventoryManagementAPI.Api/appsettings.json
+```
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=InventoryManagementDB;Trusted_Connection=true;TrustServerCertificate=True;"
+}
 ```
 
 ---

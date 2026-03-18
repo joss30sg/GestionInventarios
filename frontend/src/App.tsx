@@ -37,7 +37,7 @@ function App() {
   }, [token]);
 
   return (
-    <BrowserRouter basename="/GestionInventarios">
+    <BrowserRouter>
       {isAuthenticated && isAdmin && (
         <NotificationCenter 
           notifications={notifications} 
