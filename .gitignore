@@ -7,20 +7,36 @@
 *.sln.iml
 *.sublime-project
 *.sublime-workspace
+*.code-workspace
+.history/
+.classpath
+.project
+.c9/
+*.launch
+.settings/
+.loadpath
+
+# ============================================
+# OS
+# ============================================
+.DS_Store
+.AppleDouble
+.AppleDB
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
 *.swp
 *.swo
+.#*
 *~
-.DS_Store
-Thumbs.db
 
 # ============================================
 # .NET / BACKEND
 # ============================================
-# Build results
 bin/
 obj/
-dist/
-build/
+artifacts/
 backend/bin/
 backend/obj/
 backend/.vs/
@@ -33,25 +49,12 @@ NugetPackages/
 packages/
 .nuget/
 
-# Dependencies
+# Lock files
 *.lock.json
 project.lock.json
 project.fragment.lock.json
-artifacts/
 
-# Database
-*.db
-*.sqlite
-*.sqlite3
-*.mdf
-*.ldf
-*.mdf.bak
-LocalDB/
-Data/
-*.db-shm
-*.db-wal
-
-# User-specific files
+# User-specific
 *.suo
 *.user
 *.userosscache
@@ -60,9 +63,7 @@ Data/
 # ============================================
 # NODE / FRONTEND
 # ============================================
-# Dependencies
 node_modules/
-npm-debug.log
 npm-debug.log*
 yarn-error.log
 yarn-debug.log
@@ -70,36 +71,27 @@ package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
-# Generated JavaScript from TypeScript
+# Generated JS from TypeScript
 frontend/src/**/*.js
 frontend/src/**/*.js.map
 !frontend/src/**/*.test.js
 
-# Production
+# Build output
 frontend/dist/
 frontend/build/
 frontend/.vite/
 frontend/coverage/
-
-# Development
+dist/
+build/
+dist-ssr/
 .vite/
-vite.config.ts.bak
 
 # ============================================
 # ENVIRONMENT & SECRETS
 # ============================================
 .env
-.env.local
-.env.*.local
-.env.development
-.env.development.local
-.env.test
-.env.test.local
-.env.production
-.env.production.local
-.env.*.env
-
-# Secrets
+.env.*
+!.env.example
 *.key
 *.pem
 *.pfx
@@ -109,29 +101,37 @@ secrets/
 private/
 
 # ============================================
-# LOGS & TEMP FILES
+# DATABASE
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+*.mdf
+*.ldf
+*.mdf.bak
+LocalDB/
+*.db-shm
+*.db-wal
+
+# ============================================
+# LOGS & TEMP
 # ============================================
 logs/
-log/
-*.log
 Logs/
-logs/**
+*.log
 *.log.*
-
-# Runtime data
 pids/
 *.pid
 *.pid.lock
 *.seed
 *.seed.*
-
-# Temporary files
 tmp/
 temp/
 *.tmp
 *.bak
 *.bak.*
 .cache/
+.turbo/
 
 # ============================================
 # TEST & COVERAGE
@@ -144,59 +144,12 @@ test-results/
 htmlcov/
 
 # ============================================
-# OS & MISC
+# MISC
 # ============================================
 *.orig
 *.rej
-.DS_Store
-Thumbs.db
-Desktop.ini
-ehthumbs.db
-
-# Miscellaneous
-.turbo/
-dist-ssr/
 *.local
-
-# ============================================
-# VSCODE EXTENSIONS
-# ============================================
-.vscode/settings.json
-.vscode/extensions.json
-.vscode/launch.json
-.vscode/tasks.json
-
-# ============================================
-# IDE SPECIFIC
-# ============================================
-.classpath
-.project
-.c9/
-*.launch
-.settings/
-.loadpath
-
-# ============================================
-# VISUAL STUDIO CODE
-# ============================================
-.history/
-*.code-workspace
-
-# Visual Studio Code
-.vscode/settings.json
-.vscode/tasks.json
-.vscode/launch.json
-.vscode/extensions.json
-
-# macOS
-.AppleDouble
-.AppleDB
-*.swp
-.#*
-
-# Windows
-ehthumbs.db
-$RECYCLE.BIN/
+vite.config.ts.bak
 
 # Rider
 .idea/
