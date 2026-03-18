@@ -25,7 +25,7 @@ function ProtectedRoute({
 
 function App() {
   const { isAuthenticated, token, isAdmin } = useAuth();
-  const { notifications, dismissNotification } = useInventoryNotifications();
+  const { notifications, dismissNotification } = useInventoryNotifications(isAuthenticated && isAdmin);
 
   useEffect(() => {
     if (token) {

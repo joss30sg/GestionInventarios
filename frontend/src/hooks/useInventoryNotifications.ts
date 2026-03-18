@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import * as signalR from '@microsoft/signalr';
+import axios from 'axios';
 
 interface Notification {
   id: string;
@@ -22,10 +23,40 @@ interface UseInventoryNotificationsReturn {
 
 let connection: signalR.HubConnection | null = null;
 
-export function useInventoryNotifications(): UseInventoryNotificationsReturn {
+export function useInventoryNotifications(enabled: boolean = false): UseInventoryNotificationsReturn {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [isConnected, setIsConnected] = useState(false);
   const [connectionError, setConnectionError] = useState<string | null>(null);
+
+  // Cargar alertas existentes desde la API solo cuando el usuario admin está autenticado
+  useEffect(() => {
+    if (!enabled) return;
+    const loadExistingAlerts = async () => {
+      try {
+        const token = localStorage.getItem('auth_token');
+        if (!token) return;
+        const resp = await axios.get('http://localhost:5000/api/notifications/low-stock', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (resp.data?.success && resp.data?.data?.length > 0) {
+          const existing: Notification[] = resp.data.data.map((alert: any) => ({
+            id: `existing-${alert.productId}-${Date.now()}`,
+            productId: alert.productId,
+            productName: alert.productName,
+            currentQuantity: alert.currentQuantity,
+            thresholdQuantity: alert.thresholdQuantity,
+            category: alert.category,
+            alertTime: alert.alertTime || new Date().toISOString(),
+            severity: alert.severity || (alert.currentQuantity === 0 ? 'Critical' : 'Warning'),
+          }));
+          setNotifications(existing);
+        }
+      } catch (err) {
+        console.log('[NOTIFICATIONS] No se pudieron cargar alertas existentes');
+      }
+    };
+    loadExistingAlerts();
+  }, [enabled]);
 
   useEffect(() => {
     const initializeConnection = async () => {
