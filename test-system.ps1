@@ -109,7 +109,7 @@ Write-Host "4️⃣  Probando autenticación..." -ForegroundColor Yellow
 
 $loginData = @{
     username = "admin"
-    password = "Admin@123"
+    password = "admin123"
 } | ConvertTo-Json
 
 $token = $null
@@ -188,14 +188,14 @@ Write-Host "📋 Próximas acciones:" -ForegroundColor Yellow
 Write-Host "  1. Abre http://localhost:3000 para usar la aplicación"
 Write-Host "  2. Abre http://localhost:5000/index.html para ver Swagger"
 Write-Host "  3. Prueba las siguientes cuentas:" 
-Write-Host "     - Usuario: admin / Admin@123 (rol Admin)"
-Write-Host "     - Usuario: juan / Password@123 (rol User)"
+Write-Host "     - Usuario: admin / admin123 (rol Admin)"
+Write-Host "     - Usuario: empleado / empleado123 (rol User)"
 Write-Host ""
 Write-Host "🎯 Funcionalidades para probar:" -ForegroundColor Yellow
 Write-Host ""
-Write-Host "  Como USUARIO REGULAR (juan):"
+Write-Host "  Como USUARIO EMPLEADO (empleado):"
+Write-Host "    ✓ Ver todos los pedidos"
 Write-Host "    ✓ Crear un nuevo pedido"
-Write-Host "    ✓ Ver 'Mis Pedidos'"
 Write-Host "    ✓ Editar un pedido"
 Write-Host "    ✓ Eliminar un pedido"
 Write-Host ""

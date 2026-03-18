@@ -1,605 +1,260 @@
-# 🚀 Sistema de Gestión de Pedidos - Fullstack Senior
+# 📦 Gestión de Inventarios - Guía de Inicio Rápido
 
-**Solución Fullstack profesional para gestión de pedidos con autenticación JWT, arquitectura limpia y seguridad empresarial**
-
-## 📋 Descripción General
-
-Aplicación Fullstack moderna que proporciona capacidades completas de gestión de pedidos:
-
-- ✅ Registro e inicio de sesión seguro con JWT Bearer tokens
-- ✅ Operaciones CRUD completas de pedidos (Crear, Leer, Actualizar, Eliminar)
-- ✅ Gestión de artículos dentro de cada pedido
-- ✅ Gestión del estado de pedidos (Pendiente → Entregado)
-- ✅ Control de acceso basado en roles (Admin, Usuario)
-- ✅ Arquitectura limpia con separación de responsabilidades
-- ✅ Patrones de resiliencia y mecanismos de reintentos automáticos
-- ✅ Validación robusta y logging estructurado
-- ✅ UI profesional con React + TypeScript
-- ✅ Diseño responsivo y estilos modernos
+Sistema integral de gestión de inventarios con autenticación basada en roles, construido con **.NET 8** y **React 18**.
 
 ---
 
-## 🏗️ Stack Tecnológico
+## ⚡ Inicio Rápido (3 pasos)
 
-### Backend
-- **Framework:** ASP.NET Core 8.0
-- **ORM:** Entity Framework Core 8.0
-- **Base de Datos:** SQL Server Express (localhost\SQLEXPRESS)
-- **Autenticación:** JWT Bearer Tokens (expiración 60 minutos)
-- **Validación:** FluentValidation
-- **Mapeo:** AutoMapper
-- **Logging:** Serilog
-- **Arquitectura:** Clean Architecture con principios SOLID
-- **Documentación API:** Swagger/OpenAPI
+### 1️⃣ **Instalar Dependencias**
 
-### Frontend
-- **Framework:** React 18+
-- **Lenguaje:** TypeScript 5+
-- **Bundler:** Vite 5.4+
-- **Cliente HTTP:** Axios
-- **Routing:** React Router v6
-- **Estilos:** CSS3 con componentes modernos
-- **Testing:** Vitest + React Testing Library
-
-### Base de Datos
-- **Servidor:** SQL Server Express (localhost\SQLEXPRESS)
-- **Nombre BD:** OrderManagementDB
-- **Tablas:** Users, Orders, OrderItems
-- **Automática:** Migraciones aplicadas en la primera ejecución
-
----
-
-## ⚡ Inicio Rápido (5 minutos)
-
-### Requisitos Previos
-- SDK de .NET 8.0 instalado
-- Node.js 18+ y npm instalados
-- SQL Server Express instalado localmente
-- Git instalado
-
-### 🚀 Configuración Backend
-
-```powershell
-# Navegar a la carpeta backend
-cd backend
-
-# Restaurar paquetes NuGet
+#### Backend (.NET)
+```bash
+cd backend/InventoryManagementAPI.Api
 dotnet restore
-
-# Compilar el proyecto
-dotnet build
-
-# Ejecutar la aplicación
-dotnet run --project OrderManagementAPI.Api
-
-# ✅ Backend ejecutándose en: http://localhost:5000
-# 📚 Swagger UI: http://localhost:5000/swagger
 ```
 
-### 🚀 Configuración Frontend
-
-```powershell
-# Navegar a la carpeta frontend (en una nueva terminal)
+#### Frontend (React)
+```bash
 cd frontend
-
-# Instalar paquetes npm
 npm install
-
-# Iniciar servidor de desarrollo
-npm run dev
-
-# ✅ Frontend ejecutándose en: http://localhost:3000
 ```
 
-### 🔐 Credenciales de Admin Predeterminadas
+### 2️⃣ **Ejecutar la Aplicación**
 
+**Terminal 1 - Backend:**
+```bash
+cd backend/InventoryManagementAPI.Api
+dotnet run --configuration Debug
 ```
-Usuario:    admin
-Contraseña: Admin@123
-Rol:        Administrador
-```
+✅ Espera: `Application started. Press Ctrl+C to shut down.`  
+🔗 Backend disponible en: **http://localhost:5000**
 
----
-
-## � Guía Detallada de Ejecución
-
-### Opción 1: Ejecución Manual (Recomendado para Desarrollo)
-
-#### Paso 1: Preparar la Base de Datos
-```powershell
-# Verificar que SQL Server Express está ejecutándose
-sqlcmd -S localhost\SQLEXPRESS -Q "SELECT @@VERSION"
-
-# Si no existe la base de datos, se creará automáticamente
-```
-
-#### Paso 2: Ejecutar Backend (Terminal 1)
-```powershell
-# Navegar a la carpeta del proyecto
-cd "c:\ruta\al\proyecto"
-
-# Ir a la carpeta backend
-cd backend
-
-# Restaurar dependencias
-dotnet restore
-
-# Compilar el proyecto
-dotnet clean
-dotnet build
-
-# Ejecutar la aplicación
-dotnet run --project OrderManagementAPI.Api
-
-# Esperado: "Application started" en la consola
-# Backend disponible en: http://localhost:5000
-# Swagger UI: http://localhost:5000/swagger
-```
-
-#### Paso 3: Ejecutar Frontend (Terminal 2)
-```powershell
-# En una NUEVA terminal de PowerShell/CMD
-
-# Navegar al proyecto
-cd "c:\ruta\al\proyecto"
-
-# Ir a la carpeta frontend
+**Terminal 2 - Frontend:**
+```bash
 cd frontend
-
-# Instalar dependencias (solo la primera vez)
-npm install
-
-# Iniciar servidor de desarrollo
 npm run dev
-
-# Esperado: "VITE v5.x.x ready in XXX ms"
-# Frontend disponible en: http://localhost:3000
 ```
+✅ Espera: `VITE v5.4.21 ready in XXX ms`  
+🔗 Frontend disponible en: **http://localhost:3000**
 
-#### Paso 4: Acceder a la Aplicación
-```
-1. Abre tu navegador en: http://localhost:3000
-2. Usa las credenciales de admin:
-   - Usuario: admin
-   - Contraseña: Admin@123
-3. ¡Listo! Puedes navegar y usar la aplicación
+### 3️⃣ **Acceder a la Aplicación**
+
+Abre tu navegador en: **http://localhost:3000**
+
+---
+
+## 🔐 Credenciales de Demostración
+
+**Solo para pruebas en desarrollo.**
+
+### Administrador
+
+| Campo | Valor |
+|-------|-------|
+| **Usuario** | `admin` |
+| **Contraseña** | `Admin123!` |
+| **Rol** | Administrador |
+| **Acceso** | Completo al sistema |
+
+**Permisos:**
+- ✅ Gestión de usuarios
+- ✅ Reportes avanzados
+- ✅ Historial completo de movimientos
+- ✅ Creación y edición de productos
+- ✅ Acceso a todas las funcionalidades
+
+### Empleado
+
+| Campo | Valor |
+|-------|-------|
+| **Usuario** | `empleado` |
+| **Contraseña** | `Empleado123!` |
+| **Rol** | Empleado |
+| **Acceso** | Limitado |
+
+**Permisos:**
+- ✅ Ver listado de productos
+- ✅ Reportar stock bajo
+- ✅ Recibir alertas de inventario
+- ❌ No puede crear ni editar productos
+- ❌ No puede acceder a reportes avanzados
+- ❌ No puede gestionar usuarios
+
+---
+
+## 📋 Requisitos Previos
+
+- **Node.js** 18+ ([Descargar](https://nodejs.org/))
+- **.NET 8 SDK** ([Descargar](https://dotnet.microsoft.com/en-us/download/dotnet/8.0))
+- **SQL Server LocalDB** o **SQL Server Express** (instalado automáticamente con Visual Studio)
+
+Verifica la instalación:
+```bash
+node --version    # v18.0.0 o superior
+npm --version     # 9.0.0 o superior
+dotnet --version  # 8.0.0 o superior
 ```
 
 ---
 
-### Opción 2: Ejecución Usando Scripts PowerShell
+## 🎯 Funcionalidades Principales
 
-Se incluyen scripts para automatizar la ejecución complete:
+### Autenticación
+- ✅ Inicio de sesión con JWT
+- ✅ Control de sesión basado en roles
+- ✅ Persistencia de sesión en localStorage
 
-```powershell
-# Script para ejecutar todo automáticamente
-.\RUN_TESTS.ps1
+### Roles Disponibles
 
-# O ejecutar manualmente:
-# Script para tests del backend
-.\Scripts\test-backend.ps1
+#### 👨‍💼 **Administrador**
+- Acceso completo al sistema
+- Gestión de usuarios
+- Reportes avanzados
+- Historial completo de movimientos
+- Creación y edición de productos
 
-# Script para tests del frontend
-.\Scripts\test-frontend.ps1
-```
+#### 👤 **Empleado**
+- Ver listado de productos
+- Reportar stock bajo
+- Recibir alertas de inventario
 
----
-
-### Opción 3: Detener la Aplicación
-
-Si necesitas detener los servidores:
-
-```powershell
-# Matar procesos de .NET
-Get-Process -Name dotnet -ErrorAction SilentlyContinue | Stop-Process -Force
-
-# Matar procesos de Node.js
-Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force
-
-# Verificar que se detuvo
-Get-Process -Name dotnet, node -ErrorAction SilentlyContinue
-```
+### Gestión de Inventarios
+- 📊 Dashboard de alertas de stock
+- 🔍 Búsqueda y filtrado de productos
+- 📈 Reportes de inventario
+- ⚙️ Gestión de categorías y productos
 
 ---
 
-### Verificación de Puertos
-
-Asegúrate de que los puertos requeridos estén disponibles:
-
-```powershell
-# Verificar puerto 5000 (Backend)
-Test-NetConnection -ComputerName localhost -Port 5000
-
-# Verificar puerto 3000 (Frontend)
-Test-NetConnection -ComputerName localhost -Port 3000
-
-# Si están ocupados, libéralos:
-Get-NetTCPConnection -LocalPort 5000 | Select-Object -First 1 | ForEach-Object {
-    Get-Process -Id $_.OwningProcess | Stop-Process -Force
-}
-```
-
----
-
-### Verificación de Requisitos
-
-Antes de ejecutar, verifica que tienes todo instalado:
-
-```powershell
-# Verificar .NET SDK 8.0
-dotnet --version
-
-# Verificar Node.js
-node --version
-
-# Verificar npm
-npm --version
-
-# Verificar SQL Server Express
-sqlcmd -S localhost\SQLEXPRESS -Q "SELECT @@VERSION"
-```
-
----
-
-### Solución Rápida de Problemas Comunes
-
-| Problema | Solución |
-|----------|----------|
-| **Port 5000 en uso** | `Get-NetTCPConnection -LocalPort 5000 \| ForEach {Stop-Process -Id $_.OwningProcess}` |
-| **Port 3000 en uso** | `Get-NetTCPConnection -LocalPort 3000 \| ForEach {Stop-Process -Id $_.OwningProcess}` |
-| **Error de BD** | Reinicia SQL Server o ejecuta: `sqlcmd -S localhost\SQLEXPRESS -Q "DROP DATABASE OrderManagementDB"` |
-| **Frontend no compila** | Borra caché: `rm .vite dist -r; npm install; npm run dev` |
-| **Error CORS** | Verifica que frontend está en puerto 3000 |
-| **Token expirado** | Login nuevamente, tokens duran 60 minutos |
-
----
-
-## �📚 Documentación de API
-
-### Endpoints de Autenticación
-
-#### Registrar Nuevo Usuario
-```http
-POST /api/auth/register
-Content-Type: application/json
-
-{
-  "username": "juan.perez",
-  "email": "juan@example.com",
-  "password": "SecurePass123!"
-}
-
-Respuesta:
-{
-  "success": true,
-  "message": "Usuario registrado exitosamente",
-  "token": "eyJhbGciOiJIUzI1NiIs...",
-  "user": {
-    "id": 2,
-    "username": "juan.perez",
-    "email": "juan@example.com",
-    "role": "Usuario"
-  }
-}
-```
-
-#### Login
-```http
-POST /api/auth/login
-Content-Type: application/json
-
-{
-  "username": "juan.perez",
-  "password": "SecurePass123!"
-}
-
-Respuesta: Igual que registrar
-```
-
-### Endpoints de Gestión de Pedidos
-
-#### Obtener Pedidos del Usuario
-```http
-GET /api/orders
-Authorization: Bearer {token}
-
-Respuesta:
-{
-  "success": true,
-  "data": [
-    {
-      "id": 1,
-      "numeroPedido": "PED001",
-      "cliente": "Juan Perez",
-      "fecha": "2026-02-23",
-      "total": 150.50,
-      "estado": "Pendiente",
-      "description": "Descripción del pedido",
-      "items": [...]
-    }
-  ]
-}
-```
-
-#### Crear Pedido
-```http
-POST /api/orders
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-  "numeroPedido": "PED001",
-  "description": "Descripción del pedido",
-  "items": [
-    {
-      "productName": "Producto 1",
-      "quantity": 2,
-      "unitPrice": 50.00
-    }
-  ]
-}
-
-Respuesta: Pedido creado con ID
-```
-
-#### Actualizar Pedido
-```http
-PUT /api/orders/{id}
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-  "numeroPedido": "PED001",
-  "estado": "Entregado",
-  "description": "Descripción actualizada",
-  "items": [...]
-}
-```
-
-#### Eliminar Pedido
-```http
-DELETE /api/orders/{id}
-Authorization: Bearer {token}
-```
-
----
-
-## 🗂️ Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```
-OrderManagement/
+.
 ├── backend/
-│   ├── OrderManagementAPI.Api/
-│   │   ├── Controllers/          # Endpoints de API
-│   │   ├── Middleware/           # Middleware personalizado
-│   │   ├── Authorization/        # Atributos de autorización
-│   │   ├── Extensions/           # Inyección de dependencias
-│   │   └── Program.cs            # Configuración de aplicación
-│   ├── OrderManagementAPI.Application/
-│   │   ├── Services/             # Lógica de negocio
-│   │   ├── DTOs/                 # Objetos de transferencia de datos
-│   │   ├── Validators/           # Reglas de validación
-│   │   └── Interfaces/           # Contratos de servicios
-│   ├── OrderManagementAPI.Domain/
-│   │   ├── Entities/             # Modelos de dominio
-│   │   └── Interfaces/           # Contratos de repositorio
-│   ├── OrderManagementAPI.Infrastructure/
-│   │   ├── Data/                 # Contexto de base de datos
-│   │   ├── Services/             # Servicios de infraestructura
-│   │   ├── Security/             # Hash de contraseñas
-│   │   └── Migrations/           # Migraciones de BD
-│   └── OrderManagementAPI.Tests/
-│       ├── Services/             # Tests de servicios
-│       └── Security/             # Tests de seguridad
+│   ├── InventoryManagementAPI.Api/          # API Principal (.NET)
+│   ├── InventoryManagementAPI.Application/  # Lógica de aplicación
+│   ├── InventoryManagementAPI.Domain/       # Modelos de dominio
+│   ├── InventoryManagementAPI.Infrastructure/ # Acceso a datos
+│   └── InventoryManagementAPI.Tests/        # Tests
 │
 ├── frontend/
 │   ├── src/
-│   │   ├── components/           # Componentes React
-│   │   ├── pages/                # Componentes de página
-│   │   ├── services/             # Servicios de API
-│   │   ├── contexts/             # Contextos de React
-│   │   ├── types/                # Tipos TypeScript
-│   │   ├── styles/               # Archivos CSS
-│   │   └── App.tsx               # Componente principal
-│   ├── public/                   # Assets estáticos
-│   ├── index.html                # Punto de entrada HTML
-│   └── vite.config.ts            # Configuración de Vite
+│   │   ├── pages/        # Páginas (Login, Inventario, Perfil)
+│   │   ├── components/   # Componentes reutilizables
+│   │   ├── context/      # AuthContext para estado global
+│   │   └── styles/       # Estilos globales
+│   ├── package.json
+│   └── vite.config.ts    # Configuración Vite
 │
-└── README.md                      # Este archivo
+└── README.md             # Este archivo
 ```
 
 ---
 
-## 🔑 Características Principales
+## 🔧 Puertos y Direcciones
 
-### Autenticación y Autorización
-- Autenticación basada en JWT Bearer tokens
-- Expiración automática de tokens (60 minutos)
-- Hash seguro de contraseñas con bcrypt
-- Control de acceso basado en roles
-
-### Gestión de Pedidos
-- Crear, leer, actualizar y eliminar pedidos
-- Seguimiento del estado del pedido (Pendiente, Entregado)
-- Gestión de artículos de pedido con precios
-- Generación de números de pedido
-- Aislamiento de pedidos por usuario
-
-### Validación de Datos
-- Reglas FluentValidation en backend
-- Validación en tiempo real en frontend
-- Mensajes de error comprehensivos
-- Validación de solicitud/respuesta
-
-### Manejo de Errores
-- Middleware global de excepciones
-- Respuestas de error estructuradas
-- Logging detallado con Serilog
-- Mensajes de error amigables para el usuario
-
-### Seguridad
-- Configuración de CORS para localhost:3000
-- Lista para HTTPS (desarrollo: HTTP)
-- Prevención de inyección SQL (consultas parametrizadas)
-- Protección contra XSS (sanitización de contenido)
-- Soporte para tokens CSRF
+| Servicio | Puerto | URL |
+|----------|--------|-----|
+| Backend (.NET) | 5000 | http://localhost:5000 |
+| Frontend (Vite) | 3000 | http://localhost:3000 |
+| Swagger API Docs | 5000/swagger | http://localhost:5000/swagger/index.html |
 
 ---
 
-## 📝 Testing
+## 🚀 Comandos Útiles
 
-### Tests Backend
-```powershell
-cd backend
+### Backend
+```bash
+# Compilar
+dotnet build
 
-# Ejecutar todos los tests
+# Ejecutar
+dotnet run --configuration Debug
+
+# Tests
 dotnet test
 
-# Ejecutar con cobertura
-dotnet test /p:CollectCoverageFlag=true
+# Migrar base de datos
+dotnet ef database update
 ```
 
-### Tests Frontend
-```powershell
-cd frontend
+### Frontend
+```bash
+# Desarrollo
+npm run dev
 
-# Ejecutar tests
+# Build producción
+npm run build
+
+# Tests
 npm run test
 
-# Ejecutar tests con cobertura
-npm run test:coverage
-
-# Ejecutar tests en modo watch
-npm run test:watch
-```
-
----
-
-## 🚀 Deployment
-
-### Deployment Backend
-1. Publicar la aplicación: `dotnet publish -c Release`
-2. Configurar SQL Server en el entorno destino
-3. Actualizar cadena de conexión en `appsettings.json`
-4. Establecer variables de entorno para secreto JWT
-5. Desplegar en IIS, Azure App Service o contenedor Docker
-
-### Deployment Frontend
-1. Compilar la aplicación: `npm run build`
-2. Subir carpeta `dist` a hosting estático (Netlify, Vercel, GitHub Pages)
-3. O servir con cualquier servidor HTTP configurado para SPA routing
-
----
-
-## 📊 Esquema de Base de Datos
-
-### Tabla Users
-```sql
-CREATE TABLE Users (
-    Id INT PRIMARY KEY IDENTITY,
-    Username NVARCHAR(50) UNIQUE NOT NULL,
-    Email NVARCHAR(100) UNIQUE NOT NULL,
-    PasswordHash NVARCHAR(255) NOT NULL,
-    Role NVARCHAR(20) DEFAULT 'Usuario',
-    IsActive BIT DEFAULT 1,
-    CreatedAt DATETIME DEFAULT GETDATE()
-);
-```
-
-### Tabla Orders
-```sql
-CREATE TABLE Orders (
-    Id INT PRIMARY KEY IDENTITY,
-    NumeroPedido NVARCHAR(50) NOT NULL,
-    UserId INT FOREIGN KEY REFERENCES Users(Id),
-    Fecha DATETIME DEFAULT GETDATE(),
-    Total DECIMAL(10, 2) NOT NULL,
-    Estado NVARCHAR(50) DEFAULT 'Pendiente',
-    Description NVARCHAR(MAX)
-);
-```
-
-### Tabla OrderItems
-```sql
-CREATE TABLE OrderItems (
-    Id INT PRIMARY KEY IDENTITY,
-    OrderId INT FOREIGN KEY REFERENCES Orders(Id),
-    ProductName NVARCHAR(100) NOT NULL,
-    Quantity INT NOT NULL,
-    UnitPrice DECIMAL(10, 2) NOT NULL,
-    TotalPrice DECIMAL(10, 2) NOT NULL
-);
+# Previsualizar build
+npm run preview
 ```
 
 ---
 
 ## 🐛 Solución de Problemas
 
-### Problemas Backend
+### Puerto ya está en uso
+```bash
+# Windows - Matar proceso en puerto 5000
+netstat -ano | findstr :5000
+taskkill /PID <PID> /F
 
-**Problema:** Puerto 5000 ya está en uso
-```powershell
-# Terminar proceso en puerto 5000
-Get-Process | Where-Object {$_.Id -eq (Get-NetTCPConnection -LocalPort 5000).OwningProcess} | Stop-Process
+# Windows - Matar proceso en puerto 3000
+netstat -ano | findstr :3000
+taskkill /PID <PID> /F
 ```
 
-**Problema:** Conexión a base de datos fallida
-```powershell
-# Verificar que SQL Server está ejecutándose
-sqlcmd -S localhost\SQLEXPRESS -Q "SELECT @@VERSION"
-```
+### Base de datos no se conecta
+- Verifica que SQL Server esté ejecutándose
+- Checa la conexión en `backend/InventoryManagementAPI.Api/appsettings.json`
 
-**Problema:** Token JWT inválido
-- Asegurarse de que el token es reciente (no expirado)
-- Verificar formato del encabezado de autorización: `Bearer {token}`
-- Verificar que el secreto JWT está configurado correctamente
-
-### Problemas Frontend
-
-**Problema:** No se puede conectar a backend
-- Verificar que backend se está ejecutando en puerto 5000
-- Verificar configuración de CORS en Program.cs
-- Asegurarse de que API_BASE_URL es correcto
-
-**Problema:** Errores de compilación con Vite
-```powershell
-# Limpiar caché y reinstalar
-npm cache clean --force
-rm -r node_modules
+### Frontend no se compila
+```bash
+cd frontend
+rm -r node_modules package-lock.json
 npm install
-npm run dev
+npm run build
 ```
 
----
-
-## 📞 Soporte
-
-Para problemas, preguntas o contribuciones:
-1. Consulta la documentación existente en `/backend/README.md` y `/frontend/README.md`
-2. Revisa los mensajes de error y logs
-3. Verifica el estado de migraciones de base de datos
-4. Verifica la configuración del entorno
+### CORS errors
+- El backend está configurado para aceptar requests desde `http://localhost:3000`, `http://localhost:3001` y `http://localhost:5173`
+- Si usas otro puerto, actualiza la configuración CORS en `backend/InventoryManagementAPI.Api/Program.cs`
 
 ---
 
-## 📄 Licencia
+## 🔒 Seguridad
 
-Este proyecto se proporciona tal cual para propósitos educativos y profesionales.
-
----
-
-## ✨ Características Destacadas
-
-- 🔐 **Seguridad Empresarial:** JWT + Control de acceso basado en roles
-- 📊 **Arquitectura Limpia:** Principios de diseño dirigido por dominio
-- 🧪 **Testing Comprehensivo:** Tests unitarios e integración
-- 📚 **Bien Documentado:** Comentarios extensos y archivos README
-- 🎨 **UI Moderna:** Diseño responsivo con estilos profesionales
-- ⚡ **Rendimiento:** Consultas optimizadas y gestión de estado eficiente
-- 🔄 **Resiliencia:** Mecanismos de reintentos y manejo de errores
-- 📱 **Responsivo:** Funciona en escritorio, tablet y dispositivos móviles
+> ⚠️ **IMPORTANTE PARA PRODUCCIÓN**
+> - Las credenciales demo son SOLO para desarrollo
+> - Cambiar `appsettings.json` (ConnectionString, JWT Secret)
+> - Configurar HTTPS/SSL
+> - Implementar base de datos segura
+> - Usar variables de entorno para secretos
 
 ---
 
-**Última Actualización:** 23 de febrero de 2026
+## 📝 Logs
 
+Los logs se guardan en:
+- Backend: `backend/InventoryManagementAPI.Api/logs/`
+- Frontend: Consola del navegador (F12 → Console)
+
+---
+
+## 🤝 Soporte
+
+Si encuentras problemas:
+1. Revisa los logs
+2. Verifica que los servicios estén ejecutándose
+3. Comprueba los requisitos previos
+4. Prueba cerrar y reabrir las aplicaciones
+
+---
+
+**Última actualización:** 18 de marzo de 2026  
+**Versión:** 1.0.0

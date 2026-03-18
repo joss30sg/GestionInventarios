@@ -48,7 +48,7 @@ Write-Host "3. Probando autenticacion con 'admin'..." -ForegroundColor Yellow
 
 $loginData = @{
     username = "admin"
-    password = "Admin@123"
+    password = "admin123"
 } | ConvertTo-Json
 
 $token = $null
@@ -127,8 +127,8 @@ Write-Host "  - API:         http://localhost:5000/api"
 Write-Host "  - Swagger:     http://localhost:5000/index.html"
 Write-Host ""
 Write-Host "Usuarios de prueba:"
-Write-Host "  - admin / Admin@123 (rol Admin - puede aprobar/rechazar)"
-Write-Host "  - juan / Password@123 (rol User - puede crear pedidos)"
+Write-Host "  - admin / admin123 (rol Admin)"
+Write-Host "  - empleado / empleado123 (rol User)"
 Write-Host ""
 Write-Host "Funcionalidades a probar:"
 Write-Host "  USUARIO: Crear pedido, Ver pedidos, Editar, Eliminar"
