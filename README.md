@@ -62,6 +62,7 @@ Abre tu navegador en: **http://localhost:3000**
 - ✅ Reportes avanzados
 - ✅ Historial completo de movimientos
 - ✅ Creación y edición de productos
+- ✅ Recibir alertas de inventario
 - ✅ Acceso a todas las funcionalidades
 
 ### Empleado
@@ -76,7 +77,6 @@ Abre tu navegador en: **http://localhost:3000**
 **Permisos:**
 - ✅ Ver listado de productos
 - ✅ Reportar stock bajo
-- ✅ Recibir alertas de inventario
 - ❌ No puede crear ni editar productos
 - ❌ No puede acceder a reportes avanzados
 - ❌ No puede gestionar usuarios
